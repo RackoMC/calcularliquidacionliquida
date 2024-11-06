@@ -3,10 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Sitio Web</title>
+    <title>Página de Cálculo de Sueldo Líquido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        input, button {
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>¡Bienvenido a mi página de GitHub!</h1>
-    <p>Esta es mi página web gratuita creada con GitHub Pages.</p>
+    <h1>Calculadora de Sueldo Líquido en Chile</h1>
+    <p>Introduce tu sueldo bruto para calcular el sueldo líquido aproximado.</p>
+    
+    <input type="number" id="sueldoBruto" placeholder="Sueldo Bruto">
+    <button onclick="calcularSueldo()">Calcular</button>
+    
+    <h2 id="resultado">Sueldo Líquido: -</h2>
+    
+    <script>
+        function calcularSueldo() {
+            const sueldoBruto = parseFloat(document.getElementById('sueldoBruto').value);
+            if (isNaN(sueldoBruto)) {
+                alert('Introduce un número válido');
+                return;
+            }
+
+            // Supongamos un 20% de deducciones
+            const deducciones = sueldoBruto * 0.2;
+            const sueldoLiquido = sueldoBruto - deducciones;
+            
+            document.getElementById('resultado').innerText = `Sueldo Líquido: $${sueldoLiquido.toFixed(2)}`;
+        }
+    </script>
 </body>
 </html>
